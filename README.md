@@ -1,4 +1,4 @@
-# 🏡 HouzPro Backend
+# 🏡 Manarja
 
 > **Status**: 🚧 Under Construction
 
@@ -17,8 +17,7 @@ A modern SaaS platform for property management and real estate professionals. Bu
 
 ```bash
 # Clone the repo
-git clone <your-repo-url>
-cd houzpro-backend
+git clone 
 
 # Install dependencies
 pnpm install
@@ -64,15 +63,18 @@ pnpm db:seed      # Seed database with sample data
 
 ## 🌟 Roadmap
 
-- [x] Project setup & core architecture
-- [x] Database schema design
-- [ ] User authentication & authorization
-- [ ] Property CRUD operations
-- [ ] File upload & image management
-- [ ] Advanced search & filtering
+- [x] Project setup & modular architecture
+- [x] Core module structure implementation
+- [ ] Authentication & user management
+- [ ] Company & branding system
+- [ ] Project management workflows
+- [ ] Budget & financial tracking
+- [ ] Invoice & payment processing
+- [ ] Analytics & KPI dashboard
+- [ ] Document management system
 - [ ] Real-time notifications
-- [ ] Analytics dashboard
-- [ ] Mobile API optimization
+- [ ] Automated reporting
+- [ ] Advanced integrations & webhooks
 
 ## 🤝 Contributing
 
