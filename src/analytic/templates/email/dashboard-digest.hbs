@@ -1,0 +1,33 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+  <h2 style="color: #2c3e50;">{{dashboardTitle}} - Weekly report</h2>
+  
+  <p>Hello {{userName}},</p>
+  
+  <h3>KPIss</h3>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin: 20px 0;">
+    {{#each kpis}}
+    <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px;">
+      <h4 style="margin: 0 0 10px 0; color: #3498db;">{{this.title}}</h4>
+      <p style="font-size: 1.5em; margin: 0; font-weight: bold;">{{this.value}}</p>
+      <p style="margin: 5px 0 0 0; font-size: 0.8em; color: {{this.trendColor}};">
+        {{this.trend}} {{this.trendValue}} vs previous period
+      </p>
+    </div>
+    {{/each}}
+  </div>
+
+  <h3>Alerts</h3>
+  {{#if alerts.length}}
+  <ul style="padding-left: 20px;">
+    {{#each alerts}}
+    <li style="margin-bottom: 8px; color: {{this.color}};">{{this.message}}</li>
+    {{/each}}
+  </ul>
+  {{else}}
+  <p>No alert this week.</p>
+  {{/if}}
+
+  <div style="margin-top: 30px;">
+    <a href="{{dashboardLink}}" style="background-color: #3498db; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Accéder au dashboard</a>
+  </div>
+</div>

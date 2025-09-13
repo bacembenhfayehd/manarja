@@ -1,0 +1,12 @@
+import { PrismaService } from "src/prisma/prisma.service";
+
+
+export abstract class BaseRepository<T> {
+  constructor(protected readonly prisma: PrismaService) {}
+  
+  abstract findAll(filters?: any): Promise<T[]>;
+  abstract findById(id: string): Promise<T | null>;
+  abstract create(data: any): Promise<T>;
+  abstract update(id: string, data: any): Promise<T>;
+  abstract delete(id: string): Promise<void>;
+}

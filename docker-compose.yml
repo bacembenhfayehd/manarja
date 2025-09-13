@@ -1,0 +1,62 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: a3mida-backend_app
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: "postgresql://postgres:123456@db:5432/test?schema=public"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - ./:/a3mida_backend
+      - /a3mida_backend/node_modules
+    networks:
+      - a3mida_backend-network
+
+  db:
+    image: postgres:15-alpine
+    container_name: a3mida_backend_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "123456"
+      POSTGRES_DB: test
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - a3mida_backend-network
+
+  prisma-studio:
+    image: node:18-alpine
+    container_name: a3mida_backend_prisma_studio
+    depends_on:
+      db:
+        condition: service_healthy
+    working_dir: /a3mida_backend
+    volumes:
+      - ./:/a3mida_backend
+    command: ["pnpm", "exec", "prisma", "studio"]
+    ports:
+      - "5555:5555"
+    environment:
+      DATABASE_URL: "postgresql://postgres:123456@db:5432/test?schema=public"
+    networks:
+      - a3mida_backend-network
+
+volumes:
+  postgres-data:
+
+networks:
+  a3mida_backend-network:
+    driver: bridge

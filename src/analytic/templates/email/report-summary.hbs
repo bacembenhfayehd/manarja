@@ -1,0 +1,29 @@
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+  <h2 style="color: #2c3e50;">{{reportTitle}} - Resume</h2>
+  
+  <p>Hello {{userName}},</p>
+  
+  <p>YYour report "{{reportTitle}}" is ready :</p>
+  
+  <div style="background-color: #f8f9fa; padding: 15px; border-radius: 5px; margin: 20px 0;">
+    <h3 style="margin-top: 0;">Aperçu</h3>
+    <p>Period : {{dateRange.start}} au {{dateRange.end}}</p>
+    <p>Total hours : {{totalHours}}h</p>
+    <p>Projets included : {{projectsCount}}</p>
+  </div>
+
+  {{#if mainChart}}
+  <div style="margin: 20px 0;">
+    <img src="{{mainChart.url}}" alt="Graphique principal" style="max-width: 100%;"/>
+  </div>
+  {{/if}}
+
+  <div style="margin-top: 30px;">
+    <a href="{{reportLink}}" style="background-color: #3498db; color: white; padding: 10px 15px; text-decoration: none; border-radius: 5px;">Voir le rapport complet</a>
+  </div>
+
+  <p style="margin-top: 30px; font-size: 0.9em; color: #7f8c8d;">
+    You recieve this email because you subscribe to .. {{appName}}.
+    <a href="{{unsubscribeLink}}">Unfolow</a>
+  </p>
+</div>

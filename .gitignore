@@ -1,0 +1,17 @@
+# Node
+node_modules/
+dist/
+.env
+
+# Docker
+docker-compose.override.yml
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+*.tmp
+*.swp
+.DS_Store

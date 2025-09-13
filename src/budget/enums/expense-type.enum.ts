@@ -1,0 +1,6 @@
+export enum ExpenseType {
+  PLANNED = 'PLANNED',
+  ACTUAL = 'ACTUAL',
+  COMMITTED = 'COMMITTED',
+  FORECASTED = 'FORECASTED'
+}
